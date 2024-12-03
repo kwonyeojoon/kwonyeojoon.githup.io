@@ -1,0 +1,102 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* 전체 스타일 */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100vh;
+    margin: 0;
+    background-color: #fff;
+}
+
+/* 달력 컨테이너 */
+.calendar-container {
+    text-align: center;
+    width: 100%;
+    max-width: 700px; /* 이전보다 더 큰 너비로 설정 */
+}
+
+/* 달력 헤더 */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 32px; /* 글씨 크기 증가 */
+    color: #4a403a;
+    padding: 20px 0; /* 패딩을 더 크게 설정 */
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.nav-btn {
+    cursor: pointer;
+    color: #4a403a;
+    font-size: 32px; /* 화살표 크기 증가 */
+}
+
+.month-display {
+    font-weight: 600;
+}
+
+/* 요일 레이블 스타일 */
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
+    padding: 15px 0;
+    background-color: #fff;
+    position: sticky;
+    top: 70px; /* 헤더 높이에 맞춰 조정 */
+    z-index: 9;
+}
+
+.day-label {
+    font-weight: 600;
+    color: #d4a5a5;
+    font-size: 20px; /* 요일 글씨 크기 증가 */
+    text-align: center;
+}
+
+/* 날짜 박스 스타일 */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
+    padding-top: 15px;
+}
+
+.date-box {
+    background-color: #fff;
+    color: #4a403a;
+    font-size: 24px; /* 날짜 글씨 크기 증가 */
+    font-weight: 600;
+    padding: 20px 0; /* 날짜 박스 크기 증가 */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+
+/* 날짜 박스 호버 효과 */
+.date-box:hover {
+    background-color: #f5f0eb;
+}
+
+/* 공휴일 강조 (숫자 색만 빨간색으로 변경) */
+.date-box.holiday {
+    color: #e57373; /* 공휴일 텍스트 색상 */
+    font-weight: bold;
+}
+
+.date-box.empty {
+    background-color: transparent;
+    cursor: default;
+}
