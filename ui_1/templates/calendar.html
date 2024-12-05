@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>달력 스케줄러</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='calendar_style.css') }}">
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <span class="nav-btn" id="prev-month">◀</span>
+            <span class="month-display" id="month-display">Oct 2024</span>
+            <span class="nav-btn" id="next-month">▶</span>
+        </div>
+        <div class="calendar-grid" id="calendar-grid">
+            <!-- 달력 내용이 동적으로 렌더링됩니다. -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='calendar_script.js') }}"></script>
+</body>
+</html>

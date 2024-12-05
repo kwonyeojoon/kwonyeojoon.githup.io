@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>달력 및 타임라인</title>
+    <link rel="stylesheet" href="/static/cal_styles.css">
+</head>
+<body>
+    <!-- 상단 바 -->
+    <div class="top-bar">
+        <h1 id="logo">MayDay</h1> <!-- 로고 -->
+        <div class="week-container">
+            <div class="week-display">
+                <!-- 이전 주로 이동 -->
+                <span class="week-nav" onclick="prevWeek()">〈</span>
+                <!-- 주간 날짜 표시 -->
+                <div id="week-display"></div>
+                <!-- 다음 주로 이동 -->
+                <span class="week-nav" onclick="nextWeek()">〉</span>
+            </div>
+            <!-- 일정 추가 버튼 -->
+            <button class="add-button" onclick="openPopup()">+</button>
+        </div>
+    </div>
+
+    <!-- 메인 컨테이너 -->
+    <div class="container">
+        <!-- 왼쪽 사이드바 -->
+        <div class="sidebar">
+            <div class="calendar-header">
+                <!-- 이전/다음 달 이동 버튼 -->
+                <span class="month-nav" onclick="prevMonth()">〈</span>
+                <span id="month-display">November</span>
+                <span class="month-nav" onclick="nextMonth()">〉</span>
+            </div>
+            <!-- 달력 -->
+            <div id="calendar" class="calendar"></div>
+
+            <!-- 교통 정보 -->
+            <div class="traffic-info">
+                <h3>교통 정보</h3>
+                <form id="traffic-form">
+                    <!-- 출발지 입력 -->
+                    <div class="input-row">
+                        <label for="departure">출발지</label>
+                        <input type="text" id="departure" placeholder="출발지 입력">
+                    </div>
+                    <!-- 도착지 입력 -->
+                    <div class="input-row">
+                        <label for="destination">도착지</label>
+                        <input type="text" id="destination" placeholder="도착지 입력">
+                    </div>
+                    <!-- 출발 시간 입력 -->
+                    <div class="input-row">
+                        <label for="departure-time">출발 시간</label>
+                        <input type="time" id="departure-time" step="600">
+                    </div>
+                    <!-- 대중교통/자가용 선택 -->
+                    <div class="transport-options">
+                        <label><input type="checkbox" id="public-transport"> 대중교통</label>
+                        <label><input type="checkbox" id="private-vehicle"> 자가용</label>
+                        <!-- 검색 버튼 -->
+                        <button type="button" class="search-button" onclick="searchRoute()">검색</button>
+                    </div>
+                </form>
+                <!-- 최단 시간 결과 -->
+                <div id="shortest-time">
+                    <label>최단 시간</label>
+                    <input type="text" id="minimum-time" readonly placeholder="결과가 여기에 표시됩니다">
+                </div>
+            </div>
+        </div>
+
+        <!-- 타임라인 -->
+        <div class="main-timeline">
+            <!-- 오전 타임라인 -->
+            <div id="timeline-am" class="timeline">
+                {% for hour in range(0, 12) %}
+                <div class="time-row">
+                    <div class="time-label">{{ "%02d:00"|format(hour) }}</div>
+                    <div class="timeline-content"></div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- 오후 타임라인 -->
+            <div id="timeline-pm" class="timeline">
+                {% for hour in range(12, 24) %}
+                <div class="time-row">
+                    <div class="time-label">{{ "%02d:00"|format(hour) }}</div>
+                    <div class="timeline-content"></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- 스크립트 파일 포함 -->
+    <script src="/static/cal_scripts.js"></script>
+</body>
+</html>
